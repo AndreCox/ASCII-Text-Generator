@@ -15,7 +15,7 @@ function Home({}) {
   return /* @__PURE__ */ React.createElement("div", {
     className: "mb-8 mt-8"
   }, /* @__PURE__ */ React.createElement("h1", {
-    className: " text-green-400  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
+    className: " text-green-400 drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
   }, banner), /* @__PURE__ */ React.createElement("div", {
     className: "flex flex-col space-y-8 mt-8 mx-4 "
   }, /* @__PURE__ */ React.createElement("div", {
@@ -40,8 +40,10 @@ function Home({}) {
   })), /* @__PURE__ */ React.createElement("div", {
     className: "text-white"
   }, /* @__PURE__ */ React.createElement("p", {
-    className: "p-4 border border-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400"
-  }, outputText)), /* @__PURE__ */ React.createElement("select", {
+    className: "p-4 border border-green-400 shadow shadow-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400"
+  }, outputText)), /* @__PURE__ */ React.createElement("div", {
+    className: "flex flex-row justify-evenly"
+  }, /* @__PURE__ */ React.createElement("select", {
     className: "outline-none text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400",
     value: font,
     onChange: (e) => {
@@ -67,8 +69,8 @@ function Home({}) {
     onClick: () => {
       navigator.clipboard.writeText(outputText);
     },
-    className: "text-green-400 rounded-lg bg-black border border-green-400"
-  }, "Copy to Clipboard"))));
+    className: "text-green-400 shadow shadow-green-400 drop-shadow rounded-lg bg-black border border-green-400"
+  }, "Copy to Clipboard")))));
 }
 const banner = `
 █████████    █████████    █████████  █████ █████    ███████████ ██████████ █████ █████ ███████████      █████████  ██████████ ██████   █████ ██████████ ███████████     █████████   ███████████    ███████    ███████████  
