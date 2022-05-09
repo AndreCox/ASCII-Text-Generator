@@ -428,8 +428,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex {
   display: flex;
 }
+.hidden {
+  display: none;
+}
 .w-full {
   width: 100%;
+}
+.appearance-none {
+  appearance: none;
 }
 .flex-row {
   flex-direction: row;
@@ -456,6 +462,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .rounded-lg {
   border-radius: 0.5rem;
+}
+.rounded-full {
+  border-radius: 9999px;
 }
 .border {
   border-width: 1px;
@@ -492,6 +501,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .text-\[10px\] {
   font-size: 10px;
+}
+.text-\[8px\] {
+  font-size: 8px;
 }
 .text-green-400 {
   --tw-text-opacity: 1;
@@ -543,10 +555,77 @@ html {
   border: solid 1px rgb(74 222 128);
   border-radius: 1rem;
 }
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type='range'] {
+    overflow: hidden;
+    width: 100%;
+    -webkit-appearance: none;
+    background-color: transparent;
+  }
+
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #13bba4;
+    margin-top: -1px;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: rgb(74 222 128);
+    box-shadow: -80px 0 0 80px transparent;
+    border-radius: 100%;
+  }
+}
+/** FF*/
+input[type='range']::-moz-range-progress {
+  background-color: transparent;
+}
+input[type='range']::-moz-range-track {
+  background-color: rgb(74 222 128);
+}
+/* IE*/
+input[type='range']::-ms-fill-lower {
+  background-color: transparent;
+}
+input[type='range']::-ms-fill-upper {
+  background-color: transparent;
+}
 .empty\:hidden:empty {
   display: none;
 }
 .focus\:bg-green-400:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+@media (min-width: 640px) {
+
+  .sm\:block {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+
+  .md\:block {
+    display: block;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+
+  .xl\:block {
+    display: block;
+  }
+
+  .xl\:hidden {
+    display: none;
+  }
 }

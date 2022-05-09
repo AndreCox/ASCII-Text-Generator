@@ -15,8 +15,12 @@ function Home({}) {
   return /* @__PURE__ */ React.createElement("div", {
     className: "mb-8 mt-8"
   }, /* @__PURE__ */ React.createElement("h1", {
-    className: " text-green-400 drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
-  }, banner), /* @__PURE__ */ React.createElement("div", {
+    className: " text-green-400 drop-shadow xl:block hidden  shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
+  }, bannerFull), /* @__PURE__ */ React.createElement("h1", {
+    className: " text-green-400 md:block xl:hidden hidden  drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
+  }, bannerMed), /* @__PURE__ */ React.createElement("h1", {
+    className: " text-green-400 md:hidden sm:block drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[8px] overflow-clip"
+  }, bannerMed), /* @__PURE__ */ React.createElement("div", {
     className: "flex flex-col space-y-8 mt-8 mx-4 "
   }, /* @__PURE__ */ React.createElement("div", {
     className: "flex"
@@ -37,7 +41,24 @@ function Home({}) {
     },
     className: "w-full border border-green-400  outline-none  p-2 rounded-lg bg-transparent text-green-400 shadow  transition-all shadow-green-400 placeholder-green-700",
     placeholder: "Enter text here"
-  })), /* @__PURE__ */ React.createElement("div", {
+  })), /* @__PURE__ */ React.createElement("input", {
+    type: "range",
+    min: "0",
+    value: fonts.indexOf(font),
+    onChange: (e) => {
+      setFont(fonts[e.target.value]);
+      figlet.text(inputText, {font: fonts[e.target.value]}, function(err, data) {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        setOutputText(data);
+        console.log(data);
+      });
+    },
+    max: fonts.length - 1,
+    className: "mt-8 bg-transparent appearance-none border-green-400 border rounded-full "
+  }), /* @__PURE__ */ React.createElement("div", {
     className: "text-white"
   }, /* @__PURE__ */ React.createElement("p", {
     className: "p-4 border border-green-400 shadow shadow-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400"
@@ -72,7 +93,7 @@ function Home({}) {
     className: "text-green-400 shadow shadow-green-400 drop-shadow rounded-lg bg-black border border-green-400"
   }, "Copy to Clipboard")))));
 }
-const banner = `
+const bannerFull = `
 █████████    █████████    █████████  █████ █████    ███████████ ██████████ █████ █████ ███████████      █████████  ██████████ ██████   █████ ██████████ ███████████     █████████   ███████████    ███████    ███████████  
 ███░░░░░███  ███░░░░░███  ███░░░░░███░░███ ░░███    ░█░░░███░░░█░░███░░░░░█░░███ ░░███ ░█░░░███░░░█     ███░░░░░███░░███░░░░░█░░██████ ░░███ ░░███░░░░░█░░███░░░░░███   ███░░░░░███ ░█░░░███░░░█  ███░░░░░███ ░░███░░░░░███ 
 ░███    ░███ ░███    ░░░  ███     ░░░  ░███  ░███    ░   ░███  ░  ░███  █ ░  ░░███ ███  ░   ░███  ░     ███     ░░░  ░███  █ ░  ░███░███ ░███  ░███  █ ░  ░███    ░███  ░███    ░███ ░   ░███  ░  ███     ░░███ ░███    ░███ 
@@ -82,5 +103,25 @@ const banner = `
 █████   █████░░█████████  ░░█████████  █████ █████       █████    ██████████ █████ █████    █████       ░░█████████  ██████████ █████  ░░█████ ██████████ █████   █████ █████   █████    █████    ░░░███████░   █████   █████
 ░░░░░   ░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░ ░░░░░       ░░░░░    ░░░░░░░░░░ ░░░░░ ░░░░░    ░░░░░         ░░░░░░░░░  ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░   ░░░░░    ░░░░░       ░░░░░░░    ░░░░░   ░░░░░ 
                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+`;
+const bannerMed = `
+█████████    █████████    █████████  █████ █████    ███████████ ██████████ █████ █████ ███████████   
+███░░░░░███  ███░░░░░███  ███░░░░░███░░███ ░░███    ░█░░░███░░░█░░███░░░░░█░░███ ░░███ ░█░░░███░░░█  
+░███    ░███ ░███    ░░░  ███     ░░░  ░███  ░███    ░   ░███  ░  ░███  █ ░  ░░███ ███  ░   ░███  ░  
+░███████████ ░░█████████ ░███          ░███  ░███        ░███     ░██████     ░░█████       ░███     
+░███░░░░░███  ░░░░░░░░███░███          ░███  ░███        ░███     ░███░░█      ███░███      ░███     
+░███    ░███  ███    ░███░░███     ███ ░███  ░███        ░███     ░███ ░   █  ███ ░░███     ░███     
+█████   █████░░█████████  ░░█████████  █████ █████       █████    ██████████ █████ █████    █████    
+░░░░░   ░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░ ░░░░░       ░░░░░    ░░░░░░░░░░ ░░░░░ ░░░░░    ░░░░░    
+                                                                                                     
+█████████  ██████████ ██████   █████ ██████████ ███████████     █████████   ███████████    ███████    ███████████  
+███░░░░░███░░███░░░░░█░░██████ ░░███ ░░███░░░░░█░░███░░░░░███   ███░░░░░███ ░█░░░███░░░█  ███░░░░░███ ░░███░░░░░███ 
+███     ░░░  ░███  █ ░  ░███░███ ░███  ░███  █ ░  ░███    ░███  ░███    ░███ ░   ░███  ░  ███     ░░███ ░███    ░███ 
+░███          ░██████    ░███░░███░███  ░██████    ░██████████   ░███████████     ░███    ░███      ░███ ░██████████  
+░███    █████ ░███░░█    ░███ ░░██████  ░███░░█    ░███░░░░░███  ░███░░░░░███     ░███    ░███      ░███ ░███░░░░░███ 
+░░███  ░░███  ░███ ░   █ ░███  ░░█████  ░███ ░   █ ░███    ░███  ░███    ░███     ░███    ░░███     ███  ░███    ░███ 
+░░█████████  ██████████ █████  ░░█████ ██████████ █████   █████ █████   █████    █████    ░░░███████░   █████   █████
+  ░░░░░░░░░  ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░   ░░░░░    ░░░░░       ░░░░░░░    ░░░░░   ░░░░░
+
 `;
 export default Home;
