@@ -24,7 +24,7 @@ function Home({}: AppProps) {
   // Return the App component.
   return (
     <div className="mb-8 mt-8">
-      <h1 className=" text-green-400  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip">
+      <h1 className=" text-green-400 drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip">
         {banner}
       </h1>
       <div className="flex flex-col space-y-8 mt-8 mx-4 ">
@@ -35,6 +35,7 @@ function Home({}: AppProps) {
             onChange={(e) => {
               console.log(e.target.value);
               setInputText(e.target.value);
+              // @ts-ignore
               figlet.text(
                 e.target.value,
                 { font: font },
@@ -54,51 +55,53 @@ function Home({}: AppProps) {
         </div>
 
         <div className="text-white">
-          <p className="p-4 border border-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400">
+          <p className="p-4 border border-green-400 shadow shadow-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400">
             {outputText}
           </p>
         </div>
-        <select
-          className="outline-none text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400"
-          value={font}
-          onChange={(e) => {
-            setFont(e.target.value);
-            // @ts-ignore
-            figlet.text(
-              inputText,
-              {
-                font: e.target.value,
-              },
-              function (err: any, data: any) {
-                if (err) {
-                  console.log(err);
-                  return;
-                }
-                setOutputText(data);
-                console.log(data);
-              },
-            );
-          }}
-        >
-          {fonts.map((font: any, index: number) => (
-            <option
-              key={index}
-              value={font}
-              className="text-green-400 border border-green-400 focus:bg-green-400"
-            >
-              {font}
-            </option>
-          ))}
-        </select>
-        <div className="">
-          <Button
-            onClick={() => {
-              navigator.clipboard.writeText(outputText);
+        <div className="flex flex-row justify-evenly">
+          <select
+            className="outline-none text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400"
+            value={font}
+            onChange={(e) => {
+              setFont(e.target.value);
+              // @ts-ignore
+              figlet.text(
+                inputText,
+                {
+                  font: e.target.value,
+                },
+                function (err: any, data: any) {
+                  if (err) {
+                    console.log(err);
+                    return;
+                  }
+                  setOutputText(data);
+                  console.log(data);
+                },
+              );
             }}
-            className="text-green-400 rounded-lg bg-black border border-green-400"
           >
-            Copy to Clipboard
-          </Button>
+            {fonts.map((font: any, index: number) => (
+              <option
+                key={index}
+                value={font}
+                className="text-green-400 border border-green-400 focus:bg-green-400"
+              >
+                {font}
+              </option>
+            ))}
+          </select>
+          <div className="">
+            <Button
+              onClick={() => {
+                navigator.clipboard.writeText(outputText);
+              }}
+              className="text-green-400 shadow shadow-green-400 drop-shadow rounded-lg bg-black border border-green-400"
+            >
+              Copy to Clipboard
+            </Button>
+          </div>
         </div>
       </div>
     </div>

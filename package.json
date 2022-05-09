@@ -1,8 +1,8 @@
 {
-  "name": "rocket-template",
+  "name": "ascii-text-generator",
   "version": "0.0.1",
   "author": "Andre Cox",
-  "homepage": "https://andrecox.github.io/Rocket-Template",
+  "homepage": "https://andrecox.github.io/ASCII-Text-Generator",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",

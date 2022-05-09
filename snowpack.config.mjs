@@ -44,6 +44,6 @@ export default {
   },
   buildOptions: {
     //set base url here
-    baseUrl: 'https://andrecox.github.io/Rocket-Template',
+    baseUrl: 'https://andrecox.github.io/ASCII-Text-Generator',
   },
 };
