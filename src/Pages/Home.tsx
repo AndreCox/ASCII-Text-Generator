@@ -24,8 +24,14 @@ function Home({}: AppProps) {
   // Return the App component.
   return (
     <div className="mb-8 mt-8">
-      <h1 className=" text-green-400 drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip">
-        {banner}
+      <h1 className=" text-green-400 drop-shadow xl:block hidden  shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip">
+        {bannerFull}
+      </h1>
+      <h1 className=" text-green-400 md:block xl:hidden hidden  drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip">
+        {bannerMed}
+      </h1>
+      <h1 className=" text-green-400 md:hidden sm:block drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[0.5rem] overflow-clip">
+        {bannerMed}
       </h1>
       <div className="flex flex-col space-y-8 mt-8 mx-4 ">
         <div className="flex">
@@ -53,7 +59,31 @@ function Home({}: AppProps) {
             placeholder="Enter text here"
           />
         </div>
-
+        <input
+          type="range"
+          min="0"
+          // @ts-ignore
+          value={fonts.indexOf(font)}
+          onChange={(e) => {
+            // @ts-ignore
+            setFont(fonts[e.target.value]);
+            figlet.text(
+              inputText,
+              // @ts-ignore
+              { font: fonts[e.target.value] },
+              function (err: any, data: any) {
+                if (err) {
+                  console.log(err);
+                  return;
+                }
+                setOutputText(data);
+                console.log(data);
+              },
+            );
+          }}
+          max={fonts.length - 1}
+          className="mt-8 bg-transparent appearance-none border-green-400 border rounded-full shadow shadow-green-400"
+        />
         <div className="text-white">
           <p className="p-4 border border-green-400 shadow shadow-green-400 overflow-x-scroll empty:hidden rounded-lg w-full float-left font-[Monospace] whitespace-pre text-[10px] text-green-400">
             {outputText}
@@ -61,7 +91,7 @@ function Home({}: AppProps) {
         </div>
         <div className="flex flex-row justify-evenly">
           <select
-            className="outline-none text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400"
+            className="outline-none shadow shadow-green-400 text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400"
             value={font}
             onChange={(e) => {
               setFont(e.target.value);
@@ -86,7 +116,7 @@ function Home({}: AppProps) {
               <option
                 key={index}
                 value={font}
-                className="text-green-400 border border-green-400 focus:bg-green-400"
+                className="text-green-400 border border-green-400 focus:bg-green-400 "
               >
                 {font}
               </option>
@@ -109,7 +139,7 @@ function Home({}: AppProps) {
 }
 
 // set a ascii art banner for the title
-const banner = `
+const bannerFull = `
 █████████    █████████    █████████  █████ █████    ███████████ ██████████ █████ █████ ███████████      █████████  ██████████ ██████   █████ ██████████ ███████████     █████████   ███████████    ███████    ███████████  
 ███░░░░░███  ███░░░░░███  ███░░░░░███░░███ ░░███    ░█░░░███░░░█░░███░░░░░█░░███ ░░███ ░█░░░███░░░█     ███░░░░░███░░███░░░░░█░░██████ ░░███ ░░███░░░░░█░░███░░░░░███   ███░░░░░███ ░█░░░███░░░█  ███░░░░░███ ░░███░░░░░███ 
 ░███    ░███ ░███    ░░░  ███     ░░░  ░███  ░███    ░   ░███  ░  ░███  █ ░  ░░███ ███  ░   ░███  ░     ███     ░░░  ░███  █ ░  ░███░███ ░███  ░███  █ ░  ░███    ░███  ░███    ░███ ░   ░███  ░  ███     ░░███ ░███    ░███ 
@@ -119,6 +149,27 @@ const banner = `
 █████   █████░░█████████  ░░█████████  █████ █████       █████    ██████████ █████ █████    █████       ░░█████████  ██████████ █████  ░░█████ ██████████ █████   █████ █████   █████    █████    ░░░███████░   █████   █████
 ░░░░░   ░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░ ░░░░░       ░░░░░    ░░░░░░░░░░ ░░░░░ ░░░░░    ░░░░░         ░░░░░░░░░  ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░   ░░░░░    ░░░░░       ░░░░░░░    ░░░░░   ░░░░░ 
                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+`;
+
+const bannerMed = `
+█████████    █████████    █████████  █████ █████    ███████████ ██████████ █████ █████ ███████████   
+███░░░░░███  ███░░░░░███  ███░░░░░███░░███ ░░███    ░█░░░███░░░█░░███░░░░░█░░███ ░░███ ░█░░░███░░░█  
+░███    ░███ ░███    ░░░  ███     ░░░  ░███  ░███    ░   ░███  ░  ░███  █ ░  ░░███ ███  ░   ░███  ░  
+░███████████ ░░█████████ ░███          ░███  ░███        ░███     ░██████     ░░█████       ░███     
+░███░░░░░███  ░░░░░░░░███░███          ░███  ░███        ░███     ░███░░█      ███░███      ░███     
+░███    ░███  ███    ░███░░███     ███ ░███  ░███        ░███     ░███ ░   █  ███ ░░███     ░███     
+█████   █████░░█████████  ░░█████████  █████ █████       █████    ██████████ █████ █████    █████    
+░░░░░   ░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░ ░░░░░       ░░░░░    ░░░░░░░░░░ ░░░░░ ░░░░░    ░░░░░    
+                                                                                                     
+█████████  ██████████ ██████   █████ ██████████ ███████████     █████████   ███████████    ███████    ███████████  
+███░░░░░███░░███░░░░░█░░██████ ░░███ ░░███░░░░░█░░███░░░░░███   ███░░░░░███ ░█░░░███░░░█  ███░░░░░███ ░░███░░░░░███ 
+███     ░░░  ░███  █ ░  ░███░███ ░███  ░███  █ ░  ░███    ░███  ░███    ░███ ░   ░███  ░  ███     ░░███ ░███    ░███ 
+░███          ░██████    ░███░░███░███  ░██████    ░██████████   ░███████████     ░███    ░███      ░███ ░██████████  
+░███    █████ ░███░░█    ░███ ░░██████  ░███░░█    ░███░░░░░███  ░███░░░░░███     ░███    ░███      ░███ ░███░░░░░███ 
+░░███  ░░███  ░███ ░   █ ░███  ░░█████  ░███ ░   █ ░███    ░███  ░███    ░███     ░███    ░░███     ███  ░███    ░███ 
+░░█████████  ██████████ █████  ░░█████ ██████████ █████   █████ █████   █████    █████    ░░░███████░   █████   █████
+  ░░░░░░░░░  ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░   ░░░░░    ░░░░░       ░░░░░░░    ░░░░░   ░░░░░
+
 `;
 
 export default Home;
