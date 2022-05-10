@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "../../_snowpack/pkg/react.js";
 import {Button} from "../Components/index.js";
 import figlet from "../../_snowpack/pkg/figlet.js";
+import ReactGA from "../../_snowpack/pkg/react-ga4.js";
 function Home({}) {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
@@ -88,6 +89,11 @@ function Home({}) {
     className: ""
   }, /* @__PURE__ */ React.createElement(Button, {
     onClick: () => {
+      ReactGA.event({
+        category: "User Action",
+        action: "Clicked on the 'Copy' button",
+        label: "Copied to clipboard"
+      });
       navigator.clipboard.writeText(outputText);
     },
     className: "text-green-400 shadow shadow-green-400 drop-shadow rounded-lg bg-black border border-green-400"
