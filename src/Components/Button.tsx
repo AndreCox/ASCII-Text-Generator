@@ -10,7 +10,7 @@ function Button(props: {
   return (
     <button
       type="button"
-      className="shadow shadow-green-400 even:text-green-400 border rounded-lg p-2 border-green-400"
+      className="shadow text-green-400 shadow-green-400 even:text-green-400 border rounded-lg p-2 border-green-400"
       onClick={props.onClick}
     >
       {props.children}
