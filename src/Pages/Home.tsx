@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './../Components';
 import figlet from 'figlet';
 import { useCallback } from 'react';
+import ReactGA from 'react-ga4';
 interface AppProps {}
 
 function Home({}: AppProps) {
@@ -125,6 +126,11 @@ function Home({}: AppProps) {
           <div className="">
             <Button
               onClick={() => {
+                ReactGA.event({
+                  category: 'User Action',
+                  action: "Clicked on the 'Copy' button",
+                  label: 'Copied to clipboard',
+                });
                 navigator.clipboard.writeText(outputText);
               }}
               className="text-green-400 shadow shadow-green-400 drop-shadow rounded-lg bg-black border border-green-400"

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import ReactGA from 'react-ga4';
 
 import './App.css';
 
@@ -8,6 +9,14 @@ import './App.css';
 //add your own pages here
 import { Home } from './Pages/';
 import { store } from './Store';
+
+ReactGA.initialize([
+  {
+    trackingId: 'G-T26WV973PB',
+  },
+]);
+
+ReactGA.send('pageview');
 
 const App = () => {
   return (
