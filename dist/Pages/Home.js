@@ -19,7 +19,7 @@ function Home({}) {
   }, bannerFull), /* @__PURE__ */ React.createElement("h1", {
     className: " text-green-400 md:block xl:hidden hidden  drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[10px] overflow-clip"
   }, bannerMed), /* @__PURE__ */ React.createElement("h1", {
-    className: " text-green-400 md:hidden sm:block drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[8px] overflow-clip"
+    className: " text-green-400 md:hidden sm:block drop-shadow shadow-green-400 bg-transparent  text-center font-[Monospace] whitespace-pre text-[0.5rem] overflow-clip"
   }, bannerMed), /* @__PURE__ */ React.createElement("div", {
     className: "flex flex-col space-y-8 mt-8 mx-4 "
   }, /* @__PURE__ */ React.createElement("div", {
@@ -57,7 +57,7 @@ function Home({}) {
       });
     },
     max: fonts.length - 1,
-    className: "mt-8 bg-transparent appearance-none border-green-400 border rounded-full "
+    className: "mt-8 bg-transparent appearance-none border-green-400 border rounded-full shadow shadow-green-400"
   }), /* @__PURE__ */ React.createElement("div", {
     className: "text-white"
   }, /* @__PURE__ */ React.createElement("p", {
@@ -65,7 +65,7 @@ function Home({}) {
   }, outputText)), /* @__PURE__ */ React.createElement("div", {
     className: "flex flex-row justify-evenly"
   }, /* @__PURE__ */ React.createElement("select", {
-    className: "outline-none text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400",
+    className: "outline-none shadow shadow-green-400 text-green-400 p-1 rounded-lg bg-[rgb(10,10,10)] border border-green-400",
     value: font,
     onChange: (e) => {
       setFont(e.target.value);
@@ -83,7 +83,7 @@ function Home({}) {
   }, fonts.map((font2, index) => /* @__PURE__ */ React.createElement("option", {
     key: index,
     value: font2,
-    className: "text-green-400 border border-green-400 focus:bg-green-400"
+    className: "text-green-400 border border-green-400 focus:bg-green-400 "
   }, font2))), /* @__PURE__ */ React.createElement("div", {
     className: ""
   }, /* @__PURE__ */ React.createElement(Button, {

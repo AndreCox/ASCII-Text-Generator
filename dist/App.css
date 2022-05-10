@@ -502,8 +502,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-\[10px\] {
   font-size: 10px;
 }
-.text-\[8px\] {
-  font-size: 8px;
+.text-\[0\.5rem\] {
+  font-size: 0.5rem;
 }
 .text-green-400 {
   --tw-text-opacity: 1;
@@ -595,6 +595,10 @@ input[type='range']::-ms-fill-lower {
 }
 input[type='range']::-ms-fill-upper {
   background-color: transparent;
+}
+.even\:text-green-400:nth-child(even) {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
 }
 .empty\:hidden:empty {
   display: none;
